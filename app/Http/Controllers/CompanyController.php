@@ -36,7 +36,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+    //dd($request->all());
         $company = new CompanySystem();
         $company->name = $request->get('Name');
         $company->email = $request->get('Email');

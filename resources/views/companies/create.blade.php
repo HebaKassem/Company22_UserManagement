@@ -61,7 +61,8 @@ $(add_input_button).click(function(){
 
 
 
-	<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="companysignup.php" method="post">
+<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="{{url('companies/')}}" method="post">
+{{csrf_field()}}
 
 		<div  class="field_wrapper">
 			<h2 class="form-title">Create account</h2>
@@ -83,8 +84,8 @@ $(add_input_button).click(function(){
 			</div>
 			
 			<div class="form-group">
-				<label for="emp#">Number of employees</label>
-				<input type="number" class="form-input" name="emp#" id="emp#" required/>
+				<label for="numOfEmp">Number of employees</label>
+				<input type="number" class="form-input" name="numOfEmp" id="numOfEmp" required/>
 			</div>
 			<div class="form-group">
 				<label for="input_field[]">Interests</label>

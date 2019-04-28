@@ -5,7 +5,7 @@
 
 
 
-		<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="login.php" method="post">
+		<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="./" method="get">
 
 			<div  class="field_wrapper">
 				<h2 class="form-title">Login</h2>

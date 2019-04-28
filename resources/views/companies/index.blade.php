@@ -15,7 +15,7 @@
         <th>Email</th>
         <th>Num of Employees</th>
         <th>First interest</th>
-        <th colspan="2">Action</th>
+        <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
@@ -26,12 +26,10 @@
         <td>{{$company['email']}}</td>
         <td>{{$company['numOfEmp']}}</td>
         <td>{{$company['interest1']}}</td>
-        <td><a href="{{action('CompanyController@edit', $company['companyID'])}}" class="btn btn-warning">Edit</a></td>
         <td>
           <form action="{{action('CompanyController@destroy', $company['companyID'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
           </form>
         </td>
       </tr>

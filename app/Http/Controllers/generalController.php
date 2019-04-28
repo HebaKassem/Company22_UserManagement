@@ -56,7 +56,7 @@ class generalController extends Controller
      */
     public function show($id)
     {
-        //return view('general.user');
+        //return view('general.index');
    
     }
 

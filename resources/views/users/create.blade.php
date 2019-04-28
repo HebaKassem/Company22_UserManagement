@@ -90,7 +90,7 @@ function require() {
 	<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="{{url('users')}}" method="post">
         {{csrf_field()}}
 		<div  class="field_wrapper">
-			<h2 class="form-title">Create account</h2>
+			<h2 class="form-title">Create User Account</h2>
 			<div class="form-group">
 				<label for="Name">Name</label>
 

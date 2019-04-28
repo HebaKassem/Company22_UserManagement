@@ -64,11 +64,11 @@ $(add_input_button).click(function(){
 <form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="{{url('companies/')}}" method="post">
 {{csrf_field()}}
 
+
 		<div  class="field_wrapper">
-			<h2 class="form-title">Create account</h2>
+			<h2 class="form-title">Create Company Account</h2>
 			<div class="form-group">
 				<label for="Name">Name</label>
-
 				<input type="text" class="form-input" name="Name" pattern="(?=.*[a-z])(?=.*[A-Z]).{2,}" title="Name cannot contain any numbers or symbols" id="name" placeholder="Your Name" required/>
 			</div>
 			<div class="form-group">

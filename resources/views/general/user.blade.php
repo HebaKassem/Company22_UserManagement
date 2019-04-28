@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Welcome</title>
+	<title>User</title>
 	<link rel="stylesheet" type="text/css" href="css/jquery.ajaxcomplete.css" />
 	<!-- Font Icon -->
 	<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -17,7 +17,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="{{url('general/user')}}">User</a>
+        <a class="nav-item nav-link" href="../users/create">SignUp</a>
+        <a class="nav-item nav-link" href="../users/login">SignIn</a>
         
       </div>
     </div>

@@ -16,9 +16,13 @@ Route::get('/', function () {
 });
 Route::resource('users','UserController');
 Route::resource('companies','CompanyController');
-Route::resource('general','CompanyController');
+Route::resource('general','generalController');
 
 
 Route::post('users/edit/{id}','UserController@update');
 Route::post('companies/edit','CompanyController@update');
+Route::get('general/user','generalController@serveUser');
+//Route::get('general/user','generalController@serveUser');
+
+
 

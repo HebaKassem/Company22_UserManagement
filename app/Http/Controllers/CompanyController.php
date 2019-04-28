@@ -123,7 +123,9 @@ class CompanyController extends Controller
     }
 
     public function getcompanybyid(Request $request){
-        $company= CompanySystem::where('id', $request->get('id'))->get(); //id or companyID ??
+          $id= $request->get('id');
+          $company = CompanySystem::find($id);
+        //id or companyID ??
         return response()->json($company);
     }
 
@@ -145,7 +147,7 @@ class CompanyController extends Controller
 
     public function deletecompany(Request $request)
     {
-        $id= $request->get('id'); //id??
+        $id= $request->get('id');  // id? ..YES:)
         $company = CompanySystem::find($id);
         $company->delete();
         return "Company has been  deleted";

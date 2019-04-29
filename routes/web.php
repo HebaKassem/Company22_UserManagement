@@ -22,6 +22,10 @@ Route::resource('general','generalController');
 Route::post('users/edit/{id}','UserController@update');
 Route::post('companies/edit','CompanyController@update');
 Route::get('general/user','generalController@serveUser');
+
+Route::post('companies/logged','CompanyController@loginValidation');
+Route::post('users/logged','UserController@loginValidation');
+
 //Route::get('general/user','generalController@serveUser');
 
 

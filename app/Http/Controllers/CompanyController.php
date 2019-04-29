@@ -16,7 +16,20 @@ class CompanyController extends Controller
         return view('companies.index', compact('companies'));
 
     }
+    public function loginValidation(Request $request)
+    {
+        $result = CompanySystem::where('email', '=', $request->get('Email'))
+        ->where('password', '=', $request->get('Password'))->get();
+        //dd($result);
+        if($result->isEmpty()){
+            return view('companies.show') ;
+        }
+        else{
+            $companies = CompanySystem::all()->toArray();
+            return view('companies.index', compact('companies'));
 
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,35 +41,7 @@ class CompanyController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $request->validate([
-            'Email' => 'required|unique:usersystem',
-        
-        ]); 
-    //dd($request->all());
-        $company = new CompanySystem();
-        $company->name = $request->get('Name');
-        $company->email = $request->get('Email');
-        $company->password = $request->get('Password');
-        $company->numOfEmp = $request->get('numOfEmp');
-        $company->interest1 = $request->get('interest1');
-        $company->interest2 = $request->get('interest2');
-        $company->interest3 = $request->get('interest3');
-        $company->interest4 = $request->get('interest4');
-        $company->interest5 = $request->get('interest5');
-        $company->save();
-        return redirect('companies')->with('success', 'company has been created');
-
-        
-        }
+   
 
     /**
      * Display the specified resource.
@@ -120,7 +105,38 @@ class CompanyController extends Controller
         $company->delete();
         return redirect('companies')->with('success','Company has been  deleted');
     }
+ /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
 
+        $request->validate([
+            'Name' => 'required',
+            'Email' => 'required|unique:usersystem',
+            'Password' => 'required',
+            'numOfEmp' => 'required',
+            'interest1' => 'required'
+        ]); 
+    //dd($request->all());
+        $company = new CompanySystem();
+        $company->name = $request->get('Name');
+        $company->email = $request->get('Email');
+        $company->password = $request->get('Password');
+        $company->numOfEmp = $request->get('numOfEmp');
+        $company->interest1 = $request->get('interest1');
+        $company->interest2 = $request->get('interest2');
+        $company->interest3 = $request->get('interest3');
+        $company->interest4 = $request->get('interest4');
+        $company->interest5 = $request->get('interest5');
+        $company->save();
+        return redirect('companies')->with('success', 'company has been created');
+
+        
+        }
 //API Functions...
     public function getallcompanies(){
         $companies = CompanySystem::all()->toArray();
@@ -128,13 +144,31 @@ class CompanyController extends Controller
     }
 
     public function getcompanybyid(Request $request){
-          $id= $request->get('id');
+        $exist= CompanySystem::where('companyID',$request->get('companyID'))->exists();
+        $msg = "Company doesn't exist";
+        if(!$exist){
+            return[$msg,200];
+        }else{  
+        $id= $request->get('id');
           $company = CompanySystem::find($id);
         return response()->json($company);
+        }
     }
 
     public function addnewcompany(Request $request)
     {
+        $exist= CompanySystem::where('email',$request->get('email'))->exists();
+        $msg = "email is used";
+        if($exist){
+            return[$msg,200];
+        }else{
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:usersystem',
+            'password' => 'required',
+            'numOfEmp' => 'required',
+            'interest1' => 'required'
+        ]); 
         $company = new CompanySystem();
         $company->name = $request->get('name');
         $company->email = $request->get('email');
@@ -146,17 +180,23 @@ class CompanyController extends Controller
         $company->interest4 = $request->get('interest4');
         $company->interest5 = $request->get('interest5');
         $company->save();
-        return response()->json($company);
+        return response()->json($company,200);
+        }
     }
 
     public function deletecompany(Request $request)
     {
-        $id= $request->get('id');  // id? ..YES:)
+        $exist= CompanySystem::where('companyID',$request->get('companyID'))->exists();
+        $msg = "Company doesn't exist";
+        if(!$exist){
+            return[$msg,200];
+        }else{
+        $id= $request->get('id');  
         $company = CompanySystem::find($id);
         $company->delete();
         return "Company has been  deleted";
+        }
     }
-
     public function updatebyid(Request $request)
     {
         // dd($request->all());

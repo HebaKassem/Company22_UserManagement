@@ -26,10 +26,13 @@
         <td>{{$company['email']}}</td>
         <td>{{$company['numOfEmp']}}</td>
         <td>{{$company['interest1']}}</td>
-        <td>
+        
+        <td><a href="{{action('CompanyController@edit', $company['companyID'])}}" class="btn btn-warning">Edit</a></td>
+
           <form action="{{action('CompanyController@destroy', $company['companyID'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
+
           </form>
         </td>
       </tr>

@@ -36,6 +36,11 @@ class UserController extends Controller
      */
     public function store(Request $request)//store the vars from the form into the DB
     {
+        /*$request->validate([
+            'coinname' => 'required',
+            'coinprice'=> 'numeric',
+          ]); 
+          */
         $user = new UserSystem();
         $user->name = $request->get('Name');
         $user->email = $request->get('Email');

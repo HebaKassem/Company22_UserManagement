@@ -20,13 +20,13 @@ class CreateUsersystemTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-         $table->integer('interest1');
-        $table->integer('interest2');
-        $table->integer('interest3');
-        $table->integer('interest4');
-        $table->integer('interest5');
-        $table->string('gender');
-        $table->date('dob');
+            $table->string('interest1');
+            $table->string('interest2');
+            $table->string('interest3');
+            $table->string('interest4');
+            $table->string('interest5');
+            $table->string('gender');
+            $table->date('dob');
         });
         
     }

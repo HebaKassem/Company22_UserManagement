@@ -113,7 +113,11 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-
+        $exist= CompanySystem::where('email',$request->get('email'))->exists();
+        $msg = "email is used";
+        if($exist){
+             return view('companies.create');
+        }else{
         $request->validate([
             'Name' => 'required',
             'Email' => 'required|unique:usersystem',
@@ -134,7 +138,7 @@ class CompanyController extends Controller
         $company->interest5 = $request->get('interest5');
         $company->save();
         return redirect('companies')->with('success', 'company has been created');
-
+        }
         
         }
 //API Functions...

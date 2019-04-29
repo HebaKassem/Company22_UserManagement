@@ -15,19 +15,17 @@ class CreateCompanysystemTable extends Migration
     {
         Schema::create('companysystem', function (Blueprint $table) {
             $table->bigIncrements('companyID')->unique();
-            $table->integer('interest1');
-            $table->integer('interest2');
-            $table->integer('interest3');
-            $table->integer('interest4');
-            $table->integer('interest5');
-            $table->integer('numOfEmp');
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
-
+            $table->integer('numOfEmp')->unsigned();
+            $table->string('interest1');
+            $table->string('interest2')->nullable();
+            $table->string('interest3')->nullable();
+            $table->string('interest4')->nullable();
+            $table->string('interest5')->nullable();
             $table->rememberToken();
             $table->timestamps();
-           
         });
     }
 

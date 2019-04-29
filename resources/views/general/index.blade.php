@@ -21,7 +21,7 @@
         <th><a href="../users/login" class="btn btn-warning" button style="margin:5px;">User Log In</a></th>
 
         <td><a href="../companies/create" class="btn btn-danger" button style="margin:5px;">Company Sign UP</a></td>
-        <td><a href="../users/login" class="btn btn-danger" button style="margin:5px;">Company Log In</a></td>
+        <td><a href="../companies/login" class="btn btn-danger" button style="margin:5px;">Company Log In</a></td>
 
      
       </div>

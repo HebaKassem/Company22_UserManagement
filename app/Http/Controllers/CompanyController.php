@@ -36,6 +36,11 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'Email' => 'required|unique:usersystem',
+        
+        ]); 
     //dd($request->all());
         $company = new CompanySystem();
         $company->name = $request->get('Name');
@@ -125,7 +130,6 @@ class CompanyController extends Controller
     public function getcompanybyid(Request $request){
           $id= $request->get('id');
           $company = CompanySystem::find($id);
-        //id or companyID ??
         return response()->json($company);
     }
 

@@ -118,7 +118,7 @@ function require() {
 			<div class="form-group">
 				<div class="form-row show-inputbtns">
 					<label for="dob">Date of birth</label>
-					<input placeholder="date of birth" name="dob" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+					<input placeholder="date of birth" name="dob" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" required/>
 				</div>
 
 			</div>
@@ -127,10 +127,10 @@ function require() {
 				<!--<input name="input_field[]" type="text" id="country1" style="height:35px; width:200px;"/>-->
                 <!--<a href="javascript:void(0);" class="add_input_button" title="Add field" ><img src="add-icon.png"/></a>-->
                 <input type="interest" class="form-input" name="interest1" id="interest" placeholder="interest" required/>
-                <input type="interest" class="form-input" name="interest2" id="interest" placeholder="interest" required/>
-                <input type="interest" class="form-input" name="interest3" id="interest" placeholder="interest" required/>
-                <input type="interest" class="form-input" name="interest4" id="interest" placeholder="interest" required/>
-                <input type="interest" class="form-input" name="interest5" id="interest" placeholder="interest" required/>
+                <input type="interest" class="form-input" name="interest2" id="interest" placeholder="interest" />
+                <input type="interest" class="form-input" name="interest3" id="interest" placeholder="interest" />
+                <input type="interest" class="form-input" name="interest4" id="interest" placeholder="interest" />
+                <input type="interest" class="form-input" name="interest5" id="interest" placeholder="interest" />
 			</div>
 		</div>
 		<div class="form-group">

@@ -54,16 +54,22 @@ $(add_input_button).click(function(){
 			}
 		}
 </script>
-
+<div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div><br />
 </head>
 
 <body style="text-align: center !important; background-image: url('signup.jpg')  !important;" >         
 
 
 
-<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="{{url('companies/')}}" method="post">
+<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" 
+action="{{url('companies/')}}" method="post">
 {{csrf_field()}}
-
 
 		<div  class="field_wrapper">
 			<h2 class="form-title">Create Company Account</h2>
@@ -85,17 +91,17 @@ $(add_input_button).click(function(){
 			
 			<div class="form-group">
 				<label for="numOfEmp">Number of employees</label>
-				<input type="number" class="form-input" name="numOfEmp" id="numOfEmp" required/>
+				<input type="number" class="form-input" name="numOfEmp" id="numOfEmp" min="10"  required/>
 			</div>
 			<div class="form-group">
 				<label for="input_field[]">Interests</label>
 				<!--input name="input_field[]" type="text" id="country1" style="height:35px; width:200px;"/>
 				<a href="javascript:void(0);" class="add_input_button" title="Add field" ><img src="add-icon.png"/></a-->
-		<input type="interest" class="form-input" name="interest1" id="interest" placeholder="interest1" required/>
-        <input type="interest" class="form-input" name="interest2" id="interest" placeholder="interest2" required/>
-        <input type="interest" class="form-input" name="interest3" id="interest" placeholder="interest3" required/>
-        <input type="interest" class="form-input" name="interest4" id="interest" placeholder="interest4" required/>
-        <input type="interest" class="form-input" name="interest5" id="interest" placeholder="interest5" required/>
+				<input type="interest" class="form-input" name="interest1" id="interest"  placeholder="interest1" required/>
+        <input type="interest" class="form-input" name="interest2" id="interest" placeholder="interest2" />
+        <input type="interest" class="form-input" name="interest3" id="interest" placeholder="interest3" />
+        <input type="interest" class="form-input" name="interest4" id="interest" placeholder="interest4" />
+        <input type="interest" class="form-input" name="interest5" id="interest" placeholder="interest5" />
 			
       </div>
 		</div>

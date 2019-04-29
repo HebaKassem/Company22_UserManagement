@@ -17,7 +17,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="./">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="../companies/create">Sign Up</a>
         <a class="nav-item nav-link" href="../general/">LogOut</a>
         

@@ -199,6 +199,18 @@ class CompanyController extends Controller
     }
     public function updatebyid(Request $request)
     {
+        $exist= CompanySystem::where('companyID',$request->get('companyID'))->exists();
+        $msg = "Company doesn't exist";
+        if(!$exist){
+            return[$msg,200];
+        }else{
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:usersystem',
+            'password' => 'required',
+            'numOfEmp' => 'required',
+            'interest1' => 'required'
+        ]); 
         // dd($request->all());
         $id= $request->get('id');
         $company = CompanySystem::find($id);
@@ -215,5 +227,5 @@ class CompanyController extends Controller
         return response()->json($company);
 
     }
-
+    }
 }

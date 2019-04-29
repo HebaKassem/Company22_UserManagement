@@ -50,15 +50,16 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)//store the vars from the form into the DB
-    {
+    { 
         $request->validate([
-            'Name' => 'required',
-            'Email' => 'required|unique:usersystem',
-            'Password' => 'required',
-            'dob' => 'required',
-            'Gender' => 'required',
-            'interest1' => 'required'
-        ]); 
+        'name' => 'required',
+        'email' => 'required|unique:usersystem',
+        'password' => 'required',
+        'dob' => 'required',
+        'gender' => 'required',
+        'interest1' => 'required'
+    ]); 
+
 
         $user = new UserSystem();
         $user->name = $request->get('Name');
@@ -76,7 +77,21 @@ class UserController extends Controller
     }
    
     public function addnewuser(Request $request)
-    {
+    { 
+        $exist= UserSystem::where('email',$request->get('email'))->exists();
+        $msg = "email is used";
+        if($exist){
+            return[$msg,200];
+        }else{
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|unique:usersystem',
+                'password' => 'required',
+                'dob' => 'required',
+                'gender' => 'required',
+                'interest1' => 'required'
+            ]); 
+     
         $user = new UserSystem();
         $user->name = $request->get('name');
         $user->email = $request->get('email');
@@ -90,8 +105,10 @@ class UserController extends Controller
         $user->dob = $request->get('dob');
         $user->save();
        //return "user has been added";
-       return response()->json($user);
+       return response()->json($user,200);
     }
+    
+}
     /**
      * Display the specified resource.
      *
@@ -106,9 +123,15 @@ class UserController extends Controller
     }
     
     public function getuserbyid(Request $request){
+        $exist= UserSystem::where('id',$request->get('id'))->exists();
+        $msg = "User doesn't exist";
+        if(!$exist){
+            return[$msg,200];
+        }else{  
         $user= UserSystem::where('id', $request->get('id'))->get();
         return response()->json($user);
     }
+        }
   
     /**
      * Show the form for editing the specified resource.
@@ -130,6 +153,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         //dd($request->all());
         $user = UserSystem::find($id);
         $user->name = $request->get('Name');
@@ -144,7 +168,8 @@ class UserController extends Controller
         $user->dob = $request->get('dob');
         $user->save();
         return redirect('users')->with('success', 'user has been updated');
-    }
+    
+}
     /**
      * Remove the specified resource from storage.
      *
@@ -159,13 +184,24 @@ class UserController extends Controller
     }
     public function deleteuser(Request $request)
     {
+        $exist= UserSystem::where('id',$request->get('id'))->exists();
+        $msg = "User doesn't exist";
+        if(!$exist){
+            return[$msg,200];
+        }else{
         $id= $request->get('id');
         $user = UserSystem::find($id);
         $user->delete();
         return "User has been  deleted";
+        }
     }
     public function updatebyid(Request $request)
     {
+        $exist= UserSystem::where('id',$request->get('id'))->exists();
+        $msg = "User doesn't exist";
+        if(!$exist){
+            return[$msg,200];
+        }else{
         //dd($request->all());
         $id= $request->get('id');
         $user = UserSystem::find($id);
@@ -180,6 +216,8 @@ class UserController extends Controller
         $user->gender = $request->get('gender');
         $user->dob = $request->get('dob');
         $user->save();
-        return response()->json($user);
+        return response()->json($user,200);
     }
+}
+
 }

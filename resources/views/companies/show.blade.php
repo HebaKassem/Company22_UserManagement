@@ -1,11 +1,8 @@
 @include('includes.compNav')
 <body>
-
 	<body style="text-align: center !important; background-image: url('signup.jpg')  !important;" >         
-
-
-
-		<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="./" method="get">
+		<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="{{action('CompanyController@loginValidation')}}" method="post">
+		{{csrf_field()}}
 
 			<div  class="field_wrapper">
 				<h2 class="form-title">Login</h2>

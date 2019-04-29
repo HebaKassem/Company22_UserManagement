@@ -11,7 +11,7 @@ class compTest extends TestCase
      *
      * @return void
      */
-    public function testAddCompany()//duplicate email
+   /* public function testAddCompany()//duplicate email
     {
         $data=[
             'name' => 'HappyComp',
@@ -35,7 +35,7 @@ class compTest extends TestCase
         $this->json('post','api/companies/deletecompany',$data)
         ->assertStatus(200);   
     }
-    
+    */
     public function testGetCompany()// try id not exist
     {
         $data=[

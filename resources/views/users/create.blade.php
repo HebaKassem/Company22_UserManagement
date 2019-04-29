@@ -80,6 +80,14 @@ function require() {
     }   
 }*/
 </script>
+<div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div><br />
+</head>
 
 </head>
 

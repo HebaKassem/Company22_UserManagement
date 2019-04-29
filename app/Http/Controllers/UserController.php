@@ -14,7 +14,22 @@ class UserController extends Controller
         $users = UserSystem::all()->toArray();
         return view('users.index', compact('users'));
     }
-    
+
+    public function loginValidation(Request $request)
+    {
+        $result = UserSystem::where('email', '=', $request->get('Email'))
+        ->where('password', '=', $request->get('Password'))->get();
+        //dd($result);
+        if($result->isEmpty()){
+            return view('users.show') ;
+        }
+        else{
+            $users = UserSystem::all()->toArray();
+            return view('users.index', compact('users'));
+
+        }
+    }
+
     public function getAllusers(){
         $users = UserSystem::all()->toArray();
         return response()->json($users);
@@ -36,11 +51,15 @@ class UserController extends Controller
      */
     public function store(Request $request)//store the vars from the form into the DB
     {
-        /*$request->validate([
-            'coinname' => 'required',
-            'coinprice'=> 'numeric',
-          ]); 
-          */
+        $request->validate([
+            'Name' => 'required',
+            'Email' => 'required|unique:usersystem',
+            'Password' => 'required',
+            'dob' => 'required',
+            'Gender' => 'required',
+            'interest1' => 'required'
+        ]); 
+
         $user = new UserSystem();
         $user->name = $request->get('Name');
         $user->email = $request->get('Email');
@@ -55,6 +74,7 @@ class UserController extends Controller
         $user->save();
         return redirect('users')->with('success', 'user has been added');
     }
+   
     public function addnewuser(Request $request)
     {
         $user = new UserSystem();

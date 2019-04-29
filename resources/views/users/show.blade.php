@@ -1,11 +1,7 @@
 @include('includes.nav')
 <body>
-
 	<body style="text-align: center !important; background-image: url('signup.jpg')  !important;" >         
-
-
-
-		<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="./" method="get">
+		<form style=" margin-top: 75px !important; text-align: center !important; width: 35% !important; border: none !important; background-color: white !important; opacity: 0.95 !important;" action="{{action('UserController@loginValidation')}}" method="post">
 		{{csrf_field()}}
 
 			<div  class="field_wrapper">
@@ -13,7 +9,7 @@
 
 				<div class="form-group">
 					
-					<label for="Email">Email</label>
+					<label for="Email"><b>Email</b></label>
 					<input type="email" class="form-input" name="Email" id="email" placeholder="Your Email" required/>
 				</div>
 				<div class="form-group">

@@ -2,6 +2,10 @@ run in the terminal....
 composer install
 
 
+User management functions -The user should be able to sign up to the system and fill applications.
+
+Steps that user should do: 1- Sign up to the system. 2- Fill the signup application form which is created by the company.
+
 
 
 

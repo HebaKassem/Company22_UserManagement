@@ -1,8 +1,11 @@
 run in the terminal....
 composer install
 
+# Laravel, Docker, API are used
 
-User management functions -The user should be able to sign up to the system and fill applications.
+# User management functions -The user should be able to sign up to the system and fill applications.
+
+## rest of info is in the Final_API_Specification file.
 
 
 
